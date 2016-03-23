@@ -1,5 +1,4 @@
 KernelPanic         = require 'src/Exceptions/KernelPanic'
-XTechne             = require 'src/Xjs/XTechne'
 NodeTester          = require 'src/HTMLUtils/NodeTester'
 KeyboardListener    = require 'src/IO/KeyboardListener'
 TTYManager          = require 'src/IO/TTYManager'
@@ -9,10 +8,7 @@ module.exports = class Kernel
     @version            = '0.1'
 
     @displaySurface     = null
-    @displayManager     = null
-
     @keyboardListener   = null
-
     @TTYManager         = null
 
     constructor: (container) ->
@@ -60,11 +56,6 @@ module.exports = class Kernel
         @keyboardListener = new KeyboardListener @
         @keyboardListener.registerTTYCombos()
         @write(@getTTY(1), 'Loading single-user configuration...')
-        @write(@getTTY(1), "Starting #{XTechne.className} on TTY7...")
-        @displayManager = new XTechne @, @getTTY 7
-        if not @displayManager?
-            throw new KernelPanic @, 'Could not connect to XTechne, aborting'
-        @displayManager.init()
 
     write: (target, string) ->
         if not target?

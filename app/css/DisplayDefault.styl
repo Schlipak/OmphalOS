@@ -1,23 +1,9 @@
-//============================================//
-// Default display surface style for XManager //
-// Also includes kernel TTY styles            //
-//============================================//
+//=======================================//
+// Default display surface style for TTY //
+// Also includes xinstance TTY styles    //
+//=======================================//
 
-$C0 = #212121
-$C1 = #F44336
-$C2 = #4CAF50
-$C3 = #FBC02D
-$C4 = #3F51B5
-$C5 = #9C27B0
-$C6 = #00BCD4
-$C7 = #FFFFFF
-
-$DEFAULT_BG = $C0
-$DEFAULT_FG = $C7
-
-$MONO = 'Courier New', courier, monospace
-
-//==========//
+@require "DefaultVars"
 
 html, body
     width 100%
@@ -96,8 +82,10 @@ span
     &.active
         display flex
         flex-direction column
-        & > *
+        & > span
             margin .3em 0
     &.xinstance
         display block
         padding 0
+        background-color $XDEFAULT_BG
+        color $XDEFAULT_FG
