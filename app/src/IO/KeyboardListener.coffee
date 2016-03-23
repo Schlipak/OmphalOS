@@ -1,3 +1,5 @@
+IOException     = require 'src/Exceptions/IOException'
+
 module.exports  = class KeyboardListener
     @className  = 'KeyboardListener'
 
@@ -5,6 +7,8 @@ module.exports  = class KeyboardListener
     @listener   = null
 
     constructor: (kernel) ->
+        if not kernel?
+            throw new IOException 'Somehow, could not acquire kernel. This is bad.'
         @kernel = kernel
         if not window.keypress.Listener?
             @kernel.emitException 'Cannot initialize keyboard listener', true
@@ -31,3 +35,12 @@ module.exports  = class KeyboardListener
             return false
         @listener.unregister_combo(combo)
         true
+
+    registerTTYCombos: () ->
+        if not @kernel?
+            throw new IOException 'Somehow, could not acquire kernel. This is bad.'
+        _kernel = @kernel
+        for i in [1..7]
+            @register("meta alt #{i}", (e) ->
+                _kernel.showTTY e.which - 48
+            )

@@ -8,7 +8,7 @@ module.exports = class XManager
 
     constructor: (kernel, surface) ->
         if not kernel?
-            throw new XException 'Somehow could not find kernel. No idea how this happened. Anyhow, it\'s bad.'
+            throw new XException 'Somehow, could not acquire kernel. This is bad.'
         if not surface?
             throw new XException 'Could not acquire display surface. Aborting'
         @kernelInstance = kernel
