@@ -18,9 +18,22 @@
     margin 0
     padding 0
     font-family $WIDE
-    background linear-gradient(top, lighten($C0, 20%), $C0)
+    background-color $C0
     opacity 1
     transition opacity .6s
+    &:after
+        content ''
+        display block
+        position absolute
+        top 0
+        bottom 1em
+        left 0
+        right 1em
+        background-image url('../img/omphalos_nobg_500.png')
+        background-position bottom right
+        background-repeat no-repeat
+        opacity .1
+        pointer-events none
     &.dismissing
         opacity 0
     &> .xtechneLoginBox
@@ -29,10 +42,10 @@
         justify-content center
         align-items center
         position relative
-        font-size 15px
+        font-size 16px
         min-width 300px
         min-height 150px
-        padding 4em 1em 1em
+        padding 4em 3em 1em
         background-color $XDEFAULT_BG
         color $XDEFAULT_FG
         border-radius 4px 4px 3px 3px
@@ -45,6 +58,8 @@
             left 0
             width 100%
             padding 1em 0
+            font-weight 800
+            font-size 18px
             color $XDEFAULT_BG
             background-color $C4
             text-align center
@@ -58,10 +73,11 @@
             padding .4em 0
             &>input[type="text"], &>input[type="password"]
                 border 1px solid transparentify($C0, .2)
-                border-radius(2px)
-                padding .4em
+                border-radius 2px
+                padding .6em
                 margin-left 1em
                 outline none
         &>button
+            font-size 16px
             padding .6em 1.6em
             margin-top .8em
