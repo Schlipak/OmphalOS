@@ -2,12 +2,13 @@
 // Base styles for XTechne desktop //
 //=================================//
 
-@require "DefaultVars"
+@import  'nib'
+@require 'DefaultVars'
 
 .xtechneLoginContainer
     display flex
     flex-direction row
-    justify-content space-between
+    justify-content center
     align-items center
     position relative
     top 0
@@ -16,5 +17,51 @@
     height 100%
     margin 0
     padding 0
-    color $C7
-    background-color $C2
+    font-family $WIDE
+    background linear-gradient(top, lighten($C0, 20%), $C0)
+    opacity 1
+    transition opacity .6s
+    &.dismissing
+        opacity 0
+    &> .xtechneLoginBox
+        display flex
+        flex-direction column
+        justify-content center
+        align-items center
+        position relative
+        font-size 15px
+        min-width 300px
+        min-height 150px
+        padding 4em 1em 1em
+        background-color $XDEFAULT_BG
+        color $XDEFAULT_FG
+        border-radius 4px 4px 3px 3px
+        &:before
+            content 'Welcome'
+            display block
+            position absolute
+            box-sizing border-box
+            top 0
+            left 0
+            width 100%
+            padding 1em 0
+            color $XDEFAULT_BG
+            background-color $C4
+            text-align center
+            border-radius 3px 3px 0 0
+        &>label
+            display inline-flex
+            flex-direction row
+            justify-content space-around
+            align-items center
+            width 100%
+            padding .4em 0
+            &>input[type="text"], &>input[type="password"]
+                border 1px solid transparentify($C0, .2)
+                border-radius(2px)
+                padding .4em
+                margin-left 1em
+                outline none
+        &>button
+            padding .6em 1.6em
+            margin-top .8em

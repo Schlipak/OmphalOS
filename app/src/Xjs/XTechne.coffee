@@ -28,13 +28,34 @@ module.exports = class XTechne
         @displaySurface.appendChild @displayContainer
         @loginManager = new XTechneLogin @displayContainer
         _xtechne = @
-        @loginManager.onlogin = (e) ->
+        @loginManager.addEventListener('loginSuccess', (e) ->
             _xtechne.startDesktop()
+        )
+        @loginManager.addEventListener('loginError', (e) ->
+            console.warn e.message
+        )
 
     startDesktop: () ->
+        _xtechne = @
+        @loginManager.removeEventListener('loginSuccess')
+        @loginManager.removeEventListener('loginError')
+        setTimeout(
+            () ->
+                _xtechne.clearSurface _xtechne.loginManager.displaySurface
+                delete _xtechne.loginManager
+                _xtechne.loginManager = null
+            , 600
+        )
+
+    clearSurface: (surface) ->
+        if not surface?
+            @kernel.emitException 'Could not find XTechne surface'
+            return false
+        while surface.lastChild
+            surface.removeChild surface.lastChild
         undefined
 
     clearScreen: () ->
         while @displaySurface.lastChild
             @displaySurface.removeChild @displaySurface.lastChild
-            undefined
+        undefined
