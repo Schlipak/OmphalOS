@@ -10,11 +10,14 @@
         <script src="js/vendor.js" charset="utf-8" type="application/javascript"></script>
         <script src="js/app.js" charset="utf-8" type="application/javascript"></script>
         <script type="application/javascript">
-            var OS = require('OS');
+            (function() {
+                'use strict';
+                var OS = require('OS');
 
-            document.title = OS.className;
-            var osInst = new OS(document.getElementById('osContainer'));
-            osInst.boot();
+                document.title = OS.className;
+                var osInst = new OS(document.getElementById('osContainer'));
+                osInst.boot();
+            }())
         </script>
     </body>
 </html>
