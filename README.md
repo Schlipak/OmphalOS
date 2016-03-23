@@ -10,9 +10,7 @@ And yes, this is obviously not a real OS.
     - TTYs don't run a shell, and so can't be used to issue commands
 - Kernel level logging, exceptions and, occasionaly, kernel panic
     - Kernel-level function write() handles color codes with the syntax:<br />
-    `%(F:1)Some red text%(F), %(B:4)and some blue background text%(C)`<br />
-    results in:<br />
-    <span style="color:#F44336">Some red text</span>, <span style="background-color:#3F51B5">and some blue background text</span>
+    `%(F:1)Some red text%(F), %(B:4)and some blue background text%(C)`
 - Draft of a display service (XTechne) and login manager (XTechneLogin)
     - Currently, the login manager doesn't check credentials and won't lead to anything else than a blank screen
 - Keyboard listener provided by [Keypress](http://dmauro.github.io/Keypress/)
