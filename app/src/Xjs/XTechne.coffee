@@ -1,7 +1,7 @@
 XException = require 'src/Exceptions/XException'
 
-module.exports = class XManager
-    @className = 'XManager'
+module.exports = class XTechne
+    @className = 'XTechne display manager'
 
     @kernelInstance = null
     @displaySurface = null

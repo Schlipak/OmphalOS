@@ -2,6 +2,7 @@ IOException     = require 'src/Exceptions/IOException'
 
 module.exports  = class KeyboardListener
     @className  = 'KeyboardListener'
+    @version    = '0.1'
 
     @kernel     = null
     @listener   = null
@@ -13,6 +14,7 @@ module.exports  = class KeyboardListener
         if not window.keypress.Listener?
             @kernel.emitException 'Cannot initialize keyboard listener', true
         @listener = new window.keypress.Listener()
+        @kernel.write(@kernel.getTTY(1), "#{KeyboardListener.className} version #{KeyboardListener.version}")
         return @
 
     register: (combo, callback, unordered, solitary) ->

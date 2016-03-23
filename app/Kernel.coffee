@@ -1,5 +1,5 @@
 KernelPanic         = require 'src/Exceptions/KernelPanic'
-XManager            = require 'src/Xjs/XManager'
+XTechne             = require 'src/Xjs/XTechne'
 NodeTester          = require 'src/HTMLUtils/NodeTester'
 KeyboardListener    = require 'src/IO/KeyboardListener'
 TTYManager          = require 'src/IO/TTYManager'
@@ -37,13 +37,13 @@ module.exports = class Kernel
     clearTTY: (id) ->
         @TTYManager.clearTTY id
 
-    emitException: (msg, halt) ->
+    emitException: (msg, halt = false) ->
         tty = @TTYManager.getTTY 1
         if not tty?
             throw new IOException 'Could not acquire TTY'
         time = new Date().toLocaleTimeString()
         @write tty, "[#{time}] %(F:yellow)Kernel exception%(F): #{msg}"
-        if halt? and halt is true
+        if halt is true
             throw new Error msg
 
     emitMessage: (msg, id = 1) ->
@@ -60,10 +60,10 @@ module.exports = class Kernel
         @keyboardListener = new KeyboardListener @
         @keyboardListener.registerTTYCombos()
         @write(@getTTY(1), 'Loading single-user configuration...')
-        @write(@getTTY(1), 'Starting XManager on TTY7...')
-        @displayManager = new XManager @, @getTTY 7
+        @write(@getTTY(1), "Starting #{XTechne.className} on TTY7...")
+        @displayManager = new XTechne @, @getTTY 7
         if not @displayManager?
-            throw new KernelPanic @, 'Could not connect to XManager, aborting'
+            throw new KernelPanic @, 'Could not connect to XTechne, aborting'
         @displayManager.init()
 
     write: (target, string) ->
