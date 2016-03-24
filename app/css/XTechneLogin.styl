@@ -64,20 +64,26 @@
             background-color $C4
             text-align center
             border-radius 3px 3px 0 0
-        &>label
-            display inline-flex
-            flex-direction row
-            justify-content space-around
+        &>form
+            display flex
+            flex-direction column
+            justify-content center
             align-items center
-            width 100%
-            padding .4em 0
-            &>input[type="text"], &>input[type="password"]
-                border 1px solid transparentify($C0, .2)
-                border-radius 2px
-                padding .6em
-                margin-left 1em
-                outline none
-        &>button
-            font-size 16px
-            padding .6em 1.6em
-            margin-top .8em
+            position relative
+            &>label
+                display inline-flex
+                flex-direction row
+                justify-content space-around
+                align-items center
+                width 100%
+                padding .4em 0
+                &>input[type="text"], &>input[type="password"]
+                    border 1px solid transparentify($C0, .2)
+                    border-radius 2px
+                    padding .6em
+                    margin-left 1em
+                    outline none
+            &>button
+                font-size 16px
+                padding .6em 1.6em
+                margin-top .8em

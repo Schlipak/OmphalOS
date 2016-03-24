@@ -26,14 +26,7 @@ module.exports = class XTechne
         @displayContainer = document.createElement 'div'
         @displayContainer.classList.add 'xtechneContainer'
         @displaySurface.appendChild @displayContainer
-        @loginManager = new XTechneLogin @displayContainer
-        _xtechne = @
-        @loginManager.addEventListener('loginSuccess', (e) ->
-            _xtechne.startDesktop()
-        )
-        @loginManager.addEventListener('loginError', (e) ->
-            console.warn e.message
-        )
+        @loginManager = new XTechneLogin @, @displayContainer
 
     startDesktop: () ->
         _xtechne = @

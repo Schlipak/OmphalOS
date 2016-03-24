@@ -18,20 +18,15 @@ module.exports = class Kernel
         @createTTYs()
         return @
 
-    createTTYs: () ->
-        @TTYManager = new TTYManager @, @displaySurface, 7
+    createTTYs: () -> @TTYManager = new TTYManager @, @displaySurface, 7
 
-    getTTY: (id) ->
-        @TTYManager.getTTY id
+    getTTY: (id) -> @TTYManager.getTTY id
 
-    hideTTYs: () ->
-        @TTYManager.hideTTYs()
+    hideTTYs: () -> @TTYManager.hideTTYs()
 
-    showTTY: (id) ->
-        @TTYManager.showTTY id
+    showTTY: (id) -> @TTYManager.showTTY id
 
-    clearTTY: (id) ->
-        @TTYManager.clearTTY id
+    clearTTY: (id) -> @TTYManager.clearTTY id
 
     emitException: (msg, halt = false) ->
         tty = @TTYManager.getTTY 1
