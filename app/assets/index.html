@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>OmphalOS</title>
         <link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/vendor.css" media="screen" charset="utf-8">
 
         <!-- ICONS -->
         <link rel="apple-touch-icon" sizes="57x57" href="usr/share/icons/omphalos/apple-touch-icon-57x57.png">
@@ -41,7 +42,6 @@
                 'use strict';
                 var OS = require('OS');
 
-                document.title = OS.className;
                 var osInst = new OS(document.getElementById('osContainer'));
                 osInst.boot();
             }())
