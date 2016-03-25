@@ -26,6 +26,7 @@ module.exports = class XTechne
         @displayContainer = document.createElement 'div'
         @displayContainer.classList.add 'xtechneContainer'
         @displaySurface.appendChild @displayContainer
+        Waves.init()
         @loginManager = new XTechneLogin @, @displayContainer
 
     startDesktop: () ->

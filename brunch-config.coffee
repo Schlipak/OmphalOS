@@ -7,6 +7,8 @@ files:
             'js/app.js': /^app/,
             'js/vendor.js': /^vendor/
     stylesheets:
-        joinTo: 'css/app.css'
+        joinTo:
+            'css/app.css': /^app/
+            'css/vendor.css': /^vendor/
     templates:
         joinTo: 'js/app.js'

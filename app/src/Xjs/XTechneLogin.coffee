@@ -1,4 +1,5 @@
 XException  = require 'src/Exceptions/XException'
+AjaxHelper  = require 'src/JSUtils/AjaxHelper'
 
 module.exports = class XTechneLogin
     @className      = 'XTechne login manager'
@@ -8,6 +9,7 @@ module.exports = class XTechneLogin
     @panel          = null
     @box            = null
 
+    @loginForm      = null
     @usernameInput  = null
     @passwordInput  = null
     @submitButton   = null
@@ -22,9 +24,11 @@ module.exports = class XTechneLogin
         @xtechne = xtechne
         @displaySurface = surface
         EventDispatcher.prototype.apply XTechneLogin.prototype
+        _this = @
         @addEventListener('loginSuccess', (e) -> xtechne.startDesktop())
-        @addEventListener('loginError', (e) -> console.warn e.message)
+        @addEventListener('loginError', (e) -> _this.displayError(e))
         @createPanel()
+        Waves.attach @submitButton, ['waves-button', 'waves-float', 'waves-light']
 
     createPanel: () ->
         @panel = document.createElement 'div'
@@ -34,12 +38,12 @@ module.exports = class XTechneLogin
         @box.classList.add 'xtechneLoginBox'
         @panel.appendChild @box
         content = '
-            <form action="javascript:void(0);">
-                <label for=\"userInputBox\">
+            <form action="" id="loginFormContainer">
+                <label for="userInputBox" class="noselect">
                     Username
                     <input type="text" name="username" id="userInputBox" autocomplete="off">
                 </label>
-                <label for=\"passwordInputBox\">
+                <label for="passwordInputBox" class="noselect">
                     Password
                     <input type="password" name="password" id="passwordInputBox" autocomplete="off">
                 </label>
@@ -47,28 +51,64 @@ module.exports = class XTechneLogin
             </form>
         '
         @box.insertAdjacentHTML 'beforeend', content
+        @loginForm     = document.getElementById 'loginFormContainer'
         @usernameInput = document.getElementById 'userInputBox'
         @passwordInput = document.getElementById 'passwordInputBox'
         @submitButton  = document.getElementById 'loginButton'
         _this = @
-        @submitButton.onclick = (e) ->
+        @loginForm.onsubmit = (e) ->
+            e.preventDefault()
             _this.login()
+
+    __get_user_hash__: (user, callback) ->
+        if not user?
+            return false
+        if not callback?
+            return false
+        AjaxHelper.getJSON '../etc/passwd.json', callback
+
+    displayError: (e) ->
+        console.warn e.message
+        @submitButton.disabled = true
+        @submitButton.classList.add 'error'
+        _this = @
+        setTimeout(
+            () ->
+                _this.submitButton.disabled = false
+                _this.submitButton.classList.remove 'error'
+            , 1200
+        )
+
 
     login: () ->
         if _logged is true
             return false
-        username = @usernameInput.value
+        username = @usernameInput.value.toLowerCase()
         hash = String(CryptoJS.SHA3(@passwordInput.value))
-        if username.length > 0 and @passwordInput.value.length > 0
-            _logged = true
+        _this = @
+        if username.length > 0 and _this.passwordInput.value.length > 0
+            @__get_user_hash__ username, (data) ->
+                matchHash = null
+                for userEntry in data
+                    if userEntry.user is username
+                        matchHash = userEntry.hash
+                if not matchHash? or matchHash isnt hash
+                    _this.dispatchEvent({
+                        type: 'loginError',
+                        message: "Bad credentials for user #{username}"
+                    })
+                    return false
+                _logged = true
+                _this.submitButton.disabled = true
+                _this.dispatchEvent({
+                    type: 'loginSuccess',
+                    message: "User #{username} logged in successfully"
+                })
+                _this.panel.classList.add 'dismissing'
+                return true
+        else
             @dispatchEvent({
-                type: 'loginSuccess',
-                message: "User #{username} logged in successfully"
+                type: 'loginError',
+                message: "Username or password missing"
             })
-            @panel.classList.add 'dismissing'
-            return true
-        @dispatchEvent({
-            type: 'loginError',
-            message: "Bad credentials for user #{username}"
-        })
         return false
