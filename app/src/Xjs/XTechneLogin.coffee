@@ -41,7 +41,7 @@ module.exports = class XTechneLogin
             <form action="" id="loginFormContainer">
                 <label for="userInputBox" class="noselect">
                     Username
-                    <input type="text" name="username" id="userInputBox" autocomplete="off">
+                    <input type="text" name="username" id="userInputBox" autocomplete="off" autofocus>
                 </label>
                 <label for="passwordInputBox" class="noselect">
                     Password
@@ -84,6 +84,7 @@ module.exports = class XTechneLogin
         if _logged is true
             return false
         username = @usernameInput.value.toLowerCase()
+        @usernameInput.value = username
         hash = String(CryptoJS.SHA3(@passwordInput.value))
         _this = @
         if username.length > 0 and _this.passwordInput.value.length > 0

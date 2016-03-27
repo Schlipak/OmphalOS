@@ -1,4 +1,5 @@
 XException      = require 'src/Exceptions/XException'
+XTechneStartup  = require 'src/Xjs/XTechneStartup'
 XTechneLogin    = require 'src/Xjs/XTechneLogin'
 
 module.exports = class XTechne
@@ -8,6 +9,7 @@ module.exports = class XTechne
     @displaySurface = null
 
     @displayContainer   = null
+    @startupManager     = null
     @loginManager       = null
 
     constructor: (kernel, surface) ->
@@ -21,12 +23,15 @@ module.exports = class XTechne
     init: () ->
         @kernelInstance.showTTY @displaySurface
         @kernelInstance.write(@displaySurface, 'Loading display...')
-        @clearScreen()
         @displaySurface.classList.add 'xinstance'
         @displayContainer = document.createElement 'div'
         @displayContainer.classList.add 'xtechneContainer'
-        @displaySurface.appendChild @displayContainer
         Waves.init()
+        @clearScreen()
+        @displaySurface.appendChild @displayContainer
+        @startupManager = new XTechneStartup @, @displayContainer
+
+    startLogin: () ->
         @loginManager = new XTechneLogin @, @displayContainer
 
     startDesktop: () ->
