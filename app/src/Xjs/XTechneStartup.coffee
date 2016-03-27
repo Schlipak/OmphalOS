@@ -23,7 +23,7 @@ module.exports = class XTechneStartup
     displaySplash: () ->
         @panel = document.createElement 'div'
         @panel.classList.add 'xtechneStartupContainer'
-        content = '<span id="XTechneStartupOsName">Omphal<span>OS</span></span>'
+        content = '<span id="XTechneStartupOsName" class="noselect">Omphal<span>OS</span></span>'
         @panel.insertAdjacentHTML 'beforeend', content
         @osName = document.getElementById 'XTechneStartupOsName'
         @displaySurface.appendChild @panel
