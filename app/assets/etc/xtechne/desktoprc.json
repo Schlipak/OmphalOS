@@ -1,0 +1,26 @@
+{
+    "panels": [
+        {
+            "type": "xtechneDesktopPanel",
+            "position": {
+                "x": "left",
+                "y": "bottom"
+            },
+            "contents": [
+                {
+                    "type": "xtechneDesktopPanelItem",
+                    "iconSrc": "usr/share/img/omphalos_nobg_100.png",
+                    "onClickAction": "startMenuToggle"
+                },
+                {
+                    "type": "xtechneDesktopPanelSeparator"
+                },
+                {
+                    "type": "xtechneDesktopPanelItem",
+                    "iconSrc": "usr/share/img/omphalos_100.png",
+                    "onClickAction": "none"
+                }
+            ]
+        }
+    ]
+}

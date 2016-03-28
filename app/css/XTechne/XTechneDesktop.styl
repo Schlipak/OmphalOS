@@ -1,0 +1,72 @@
+//=================================//
+// Base styles for XTechne desktop //
+//=================================//
+
+@require "../DefaultVars"
+
+$PANEL_HEIGHT = 60px
+$ICON_MARGIN = 20px
+$ICON_SIZE = $PANEL_HEIGHT - $ICON_MARGIN
+$SEPARATOR_WIDTH = $PANEL_HEIGHT / 2.5
+
+.xtechneContainer
+    display flex
+    flex-direction row
+    justify-content space-between
+    position relative
+    top 0
+    left 0
+    width 100%
+    height 100%
+    margin 0
+    padding 0
+    color $XDEFAULT_FG
+    background darken($C4, 40%)
+    overflow hidden
+    &>nav.xtechneDesktopPanel
+        display flex
+        flex-direction row
+        justify-content flex-start
+        align-items center
+        position fixed
+        left 0
+        bottom 0
+        width 100%
+        height $PANEL_HEIGHT
+        background darken($C4, 80%)
+        opacity 1
+        animation desktopPanelFadeIn .6s
+        animation-iteration-count 1
+        animation-timing-function ease-in-out
+        &>div.xtechneDesktopPanelItem
+            display inline-block
+            position relative
+            width $PANEL_HEIGHT
+            height $PANEL_HEIGHT
+            background-position center center
+            background-repeat no-repeat
+            background-size $ICON_SIZE $ICON_SIZE
+            transition background-color .2s
+            cursor pointer
+            &:hover
+                background-color rgba(255,255,255,.1)
+        &>div.xtechneDesktopPanelSeparator
+            display inline-block
+            position relative
+            width $SEPARATOR_WIDTH
+            height $PANEL_HEIGHT
+            &:before
+                content ''
+                display block
+                position absolute
+                width 2px
+                height 70%
+                background-color transparentify($C7, 50%)
+                left calc(50% - 1px)
+                top 15%
+
+@keyframes desktopPanelFadeIn
+    from
+        opacity 0
+    to
+        opacity 1

@@ -8,6 +8,8 @@ module.exports = class AjaxHelper
         if not callback?
             console.warn 'no callback'
             return null
+        if not url.match /^.+(.json)$/
+            url = url + '.json'
         request = new XMLHttpRequest()
         request.open 'GET', url, true
         request.onload = () ->

@@ -65,7 +65,7 @@ module.exports = class XTechneLogin
             return false
         if not callback?
             return false
-        AjaxHelper.getJSON 'etc/passwd.json', callback
+        AjaxHelper.getJSON 'etc/passwd', callback
 
     displayError: (e) ->
         console.warn e.message

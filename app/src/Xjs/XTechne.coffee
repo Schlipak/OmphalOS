@@ -1,6 +1,7 @@
 XException      = require 'src/Exceptions/XException'
 XTechneStartup  = require 'src/Xjs/XTechneStartup'
 XTechneLogin    = require 'src/Xjs/XTechneLogin'
+XTechneDesktop  = require 'src/Xjs/XTechneDesktop'
 
 module.exports = class XTechne
     @className = 'XTechne display manager'
@@ -11,6 +12,7 @@ module.exports = class XTechne
     @displayContainer   = null
     @startupManager     = null
     @loginManager       = null
+    @desktopManager     = null
 
     constructor: (kernel, surface) ->
         if not kernel?
@@ -43,6 +45,7 @@ module.exports = class XTechne
                 _xtechne.clearSurface _xtechne.loginManager.displaySurface
                 delete _xtechne.loginManager
                 _xtechne.loginManager = null
+                _xtechne.desktopManager = new XTechneDesktop(_xtechne, _xtechne.displayContainer)
             , 600
         )
 
