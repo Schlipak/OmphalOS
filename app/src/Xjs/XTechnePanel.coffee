@@ -23,11 +23,14 @@ module.exports = class XTechnePanel
             @container.classList.add data.type
         @displaySurface.appendChild @container
 
+    # TODO: Use array of objects containing properties and HTML element rather
+    # than the element only and storing actions in the element (safer that way)
     initContent: (contents) ->
         @elements = new Array
         _this = @
         for elData in contents
             if not elData.type?
+                # TODO: Replace with future notification system call
                 console.warn "Missing panelItem type for #{JSON.stringify(elData)}"
                 continue
             el = document.createElement 'div'
