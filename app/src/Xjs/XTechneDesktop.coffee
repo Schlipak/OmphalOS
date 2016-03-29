@@ -22,6 +22,8 @@ module.exports = class XTechneDesktop
         @displaySurface.classList.add 'xtechneDesktopContainer'
         @displaySurface.classList.add 'hidden'
         @displayContainer.appendChild @displaySurface
+        OS = require 'OS'
+        window.onbeforeunload = () -> "This will reboot/shutdown #{OS.className} without saving your work"
         @initDesktop()
 
     initDesktop: () ->
