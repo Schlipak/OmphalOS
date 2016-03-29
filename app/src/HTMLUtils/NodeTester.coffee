@@ -1,5 +1,5 @@
 module.exports = class NodeTester
-    @className = 'NodeTester'
+    @className : 'NodeTester'
 
     constructor: () ->
 

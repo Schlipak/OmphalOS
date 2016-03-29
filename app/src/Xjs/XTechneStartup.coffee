@@ -2,7 +2,7 @@ XException  = require 'src/Exceptions/XException'
 XTechne     = require 'src/Xjs/XTechne'
 
 module.exports = class XTechneStartup
-    @className = 'XTechneStartup'
+    @className : 'XTechneStartup'
 
     @xtechne        = null
     @displaySurface = null

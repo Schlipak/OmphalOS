@@ -3,7 +3,7 @@ XTechnePanel    = require 'src/Xjs/XTechnePanel'
 AjaxHelper      = require 'src/JSUtils/AjaxHelper'
 
 module.exports = class XTechneDesktop
-    @className = 'XTechneDesktop'
+    @className : 'XTechneDesktop'
 
     @xtechne            = null
     @displayContainer   = null

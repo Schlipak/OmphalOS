@@ -1,5 +1,5 @@
 module.exports = class IOException
-    @className = 'IOException'
+    @className : 'IOException'
 
     constructor: (msg) ->
         time = new Date().toLocaleTimeString()

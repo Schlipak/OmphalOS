@@ -4,7 +4,7 @@ XTechneLogin    = require 'src/Xjs/XTechneLogin'
 XTechneDesktop  = require 'src/Xjs/XTechneDesktop'
 
 module.exports = class XTechne
-    @className = 'XTechne display manager'
+    @className : 'XTechne display manager'
 
     @kernelInstance = null
     @displaySurface = null

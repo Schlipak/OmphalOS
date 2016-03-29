@@ -2,7 +2,7 @@ XException  = require 'src/Exceptions/XException'
 AjaxHelper  = require 'src/JSUtils/AjaxHelper'
 
 module.exports = class XTechneLogin
-    @className      = 'XTechne login manager'
+    @className      : 'XTechne login manager'
 
     @xtechne        = null
     @displaySurface = null

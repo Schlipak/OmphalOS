@@ -1,7 +1,7 @@
 GenericException = require 'src/Exceptions/GenericException'
 
 module.exports = class KernelException extends GenericException
-    @className = 'KernelException'
+    @className : 'KernelException'
 
     constructor: (kernel, msg) ->
         super msg

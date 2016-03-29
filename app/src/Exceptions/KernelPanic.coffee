@@ -1,5 +1,5 @@
 module.exports = class KernelPanic
-    @className = 'KernelPanic'
+    @className : 'KernelPanic'
 
     constructor: (kernel, msg) ->
         if not kernel?

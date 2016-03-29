@@ -1,8 +1,8 @@
 IOException     = require 'src/Exceptions/IOException'
 
 module.exports  = class KeyboardListener
-    @className  = 'KeyboardListener'
-    @version    = '0.1'
+    @className  : 'KeyboardListener'
+    @version    : '0.1'
 
     @kernel     = null
     @listener   = null

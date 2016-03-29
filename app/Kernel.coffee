@@ -4,8 +4,8 @@ KeyboardListener    = require 'src/IO/KeyboardListener'
 TTYManager          = require 'src/IO/TTYManager'
 
 module.exports = class Kernel
-    @className          = 'Kernel'
-    @version            = '0.1'
+    @className          : 'Kernel'
+    @version            : '0.1'
 
     @displaySurface     = null
     @keyboardListener   = null

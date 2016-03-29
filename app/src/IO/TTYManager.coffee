@@ -2,7 +2,7 @@ IOException         = require 'src/Exceptions/IOException'
 NodeTester          = require 'src/HTMLUtils/NodeTester'
 
 module.exports      = class TTYManager
-    @className      = 'TTYManager'
+    @className      : 'TTYManager'
 
     @kernel         = null
     @displaySurface = null

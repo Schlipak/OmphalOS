@@ -1,7 +1,7 @@
 XException      = require 'src/Exceptions/XException'
 
 module.exports = class XTechnePanel
-    @className = 'XTechnePanel'
+    @className : 'XTechnePanel'
 
     @xdesktop           = null
     @displaySurface     = null

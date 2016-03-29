@@ -1,5 +1,5 @@
 module.exports = class GenericException
-    @className = 'GenericException'
+    @className : 'GenericException'
 
     constructor: (kernel, msg) ->
         if not kernel?

@@ -1,5 +1,5 @@
 module.exports = class AjaxHelper
-    @className = 'AjaxHelper'
+    @className : 'AjaxHelper'
 
     @getJSON = (url, callback) ->
         if not url?
