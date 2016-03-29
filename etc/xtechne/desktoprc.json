@@ -17,8 +17,8 @@
                 },
                 {
                     "type": "xtechneDesktopPanelItem",
-                    "iconSrc": "usr/share/img/omphalos.svg",
-                    "onClickAction": "none"
+                    "iconSrc": "usr/share/icons/apps/hermes.svg",
+                    "onClickAction": "exec hermes"
                 }
             ]
         }
