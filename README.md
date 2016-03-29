@@ -1,4 +1,4 @@
-# ![Logo](app/assets/usr/share/img/omphalos_100.png) OmphalOS
+# <img src="app/assets/usr/share/img/omphalos.svg" width="50"> OmphalOS
 JavaScript based operating system
 
 This project is in very early development, and isn't functional yet.
