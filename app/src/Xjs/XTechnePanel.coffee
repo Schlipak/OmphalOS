@@ -23,8 +23,6 @@ module.exports = class XTechnePanel
             @container.classList.add data.type
         @displaySurface.appendChild @container
 
-    # TODO: Use array of objects containing properties and HTML element rather
-    # than the element only and storing actions in the element (safer that way)
     initContent: (contents) ->
         @elements = new Array
         _this = @
@@ -33,16 +31,27 @@ module.exports = class XTechnePanel
                 # TODO: Replace with future notification system call
                 console.warn "Missing panelItem type for #{JSON.stringify(elData)}"
                 continue
+            elObj = {}
             el = document.createElement 'div'
             el.classList.add elData.type
             if elData.type isnt 'xtechneDesktopPanelSeparator'
                 el.style.backgroundImage = "url('#{elData.iconSrc}')"
-                el.setAttribute 'data-action', elData.onClickAction
                 el.onclick = (e) ->
                     _this.handleClick e
                 Waves.attach el, ['waves-light']
             @container.appendChild el
-            @elements.push el
+            elObj.domTarget = el
+            elObj.action = elData.onClickAction if elData.onClickAction?
+            @elements.push elObj
+
+    getElementFromDOM: (domEl) ->
+        for o in @elements
+            if o.domTarget is domEl
+                return o
 
     handleClick: (e) ->
-        console.log e.srcElement.getAttribute 'data-action'
+        o = @getElementFromDOM e.srcElement
+        if not o?
+            # TODO: Replace with future notification system call
+            console.warn "Unknown panel item #{e.srcElement}"
+        console.log o.action

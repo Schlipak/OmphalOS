@@ -9,7 +9,7 @@
             "contents": [
                 {
                     "type": "xtechneDesktopPanelItem",
-                    "iconSrc": "usr/share/img/omphalos_nobg_100.png",
+                    "iconSrc": "usr/share/img/omphalos_nobg.svg",
                     "onClickAction": "startMenuToggle"
                 },
                 {
@@ -17,10 +17,13 @@
                 },
                 {
                     "type": "xtechneDesktopPanelItem",
-                    "iconSrc": "usr/share/img/omphalos_100.png",
+                    "iconSrc": "usr/share/img/omphalos.svg",
                     "onClickAction": "none"
                 }
             ]
         }
-    ]
+    ],
+    "theme": {
+        "backgroundImage": "usr/share/backgrounds/default.jpg"
+    }
 }

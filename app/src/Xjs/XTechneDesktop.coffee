@@ -6,6 +6,7 @@ module.exports = class XTechneDesktop
     @className = 'XTechneDesktop'
 
     @xtechne            = null
+    @displayContainer   = null
     @displaySurface     = null
 
     @panels             = null
@@ -16,7 +17,11 @@ module.exports = class XTechneDesktop
         if not surface?
             throw new XException 'Could not acquire display surface'
         @xtechne = xtechne
-        @displaySurface = surface
+        @displayContainer = surface
+        @displaySurface = document.createElement 'div'
+        @displaySurface.classList.add 'xtechneDesktopContainer'
+        @displaySurface.classList.add 'hidden'
+        @displayContainer.appendChild @displaySurface
         @initDesktop()
 
     initDesktop: () ->
@@ -27,3 +32,6 @@ module.exports = class XTechneDesktop
                 panel = new XTechnePanel _this, _this.displaySurface, pData
                 panel.initContent pData.contents
                 _this.panels.push panel
+            if data.theme? and data.theme.backgroundImage?
+                _this.displaySurface.style.backgroundImage = "url('#{data.theme.backgroundImage}')"
+            _this.displaySurface.classList.remove 'hidden'
