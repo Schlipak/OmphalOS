@@ -1,4 +1,5 @@
 XException      = require 'src/Exceptions/XException'
+XTechneWindow   = require 'src/Xjs/XTechneWindow'
 
 module.exports = class XTechnePanel
     @className : 'XTechnePanel'
@@ -42,6 +43,19 @@ module.exports = class XTechnePanel
             @container.appendChild el
             elObj.domTarget = el
             elObj.action = elData.onClickAction if elData.onClickAction?
+            if elObj.action? and elObj.action is 'startMenuToggle'
+                elObj.menu = new XTechneWindow @displaySurface, 'Start', {
+                    position:
+                        left: '0'
+                        right: null
+                        top: null
+                        bottom: '60px'
+                    size:
+                        w: '400px'
+                        h: '600px'
+                    borders: false
+                    background: '#282828'
+                }
             @elements.push elObj
 
     getElementFromDOM: (domEl) ->
@@ -54,4 +68,10 @@ module.exports = class XTechnePanel
         if not o?
             # TODO: Replace with future notification system call
             console.warn "Unknown panel item #{e.srcElement}"
-        console.log o.action
+        if o.action is 'startMenuToggle' and o.menu?
+            o.menu.toggle()
+        else if o.action.match /^exec .+$/
+            action = o.action.split('exec ')[1]
+            action = action.slice(0,1).toUpperCase() + action.slice(1).toLowerCase()
+            AppClass = require "src/Apps/#{action}/#{action}"
+            @xdesktop.stackManager.register new AppClass @displaySurface

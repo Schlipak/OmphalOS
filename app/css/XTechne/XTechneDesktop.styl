@@ -22,6 +22,8 @@ $SEPARATOR_WIDTH = $PANEL_HEIGHT / 2.5
     padding 0
     color $XDEFAULT_FG
     background darken($C4, 40%)
+    background-size cover
+    background-position center center
     overflow hidden
     opacity 1
     transition opacity 1s
@@ -39,6 +41,7 @@ $SEPARATOR_WIDTH = $PANEL_HEIGHT / 2.5
         height $PANEL_HEIGHT
         background $C0
         border-top 1px solid rgba(255,255,255,.05)
+        z-index 999999
         opacity 1
         &>div.xtechneDesktopPanelItem
             display inline-block
