@@ -3,9 +3,9 @@ XTechne             = require 'src/Xjs/XTechne'
 OSException         = require 'src/Exceptions/OSException'
 
 module.exports  = class OS
-    @className      = 'OmphalOS'
-    @version        = '0.1'
-    @versionName    = 'Artemis'
+    @className      : 'OmphalOS'
+    @version        : '0.1'
+    @versionName    : 'Artemis'
 
     @kernel         = null
     @displayManager = null

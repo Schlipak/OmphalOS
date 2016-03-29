@@ -1,4 +1,5 @@
 XException  = require 'src/Exceptions/XException'
+XTechne     = require 'src/Xjs/XTechne'
 
 module.exports = class XTechneStartup
     @className = 'XTechneStartup'
@@ -21,9 +22,14 @@ module.exports = class XTechneStartup
         @displaySplash()
 
     displaySplash: () ->
+        OS = require 'OS'
         @panel = document.createElement 'div'
         @panel.classList.add 'xtechneStartupContainer'
-        content = '<span id="XTechneStartupOsName" class="noselect">Omphal<span>OS</span></span>'
+        content = "
+            <span id=\"XTechneStartupOsName\" class=\"noselect\">Omphal<span>OS</span>
+                <span id=\"XTechneStartupOsDetails\" class=\"noselect\">v#{OS.version} #{OS.versionName}</span>
+            </span>
+        "
         @panel.insertAdjacentHTML 'beforeend', content
         @osName = document.getElementById 'XTechneStartupOsName'
         @displaySurface.appendChild @panel

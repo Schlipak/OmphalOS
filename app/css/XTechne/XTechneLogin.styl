@@ -57,7 +57,7 @@
         background-color $XDEFAULT_BG
         color $XDEFAULT_FG
         border-radius 6px 6px 5px 5px
-        animation xtechneLoginSlideIn 1s
+        animation xtechneLoginSlideIn .5s
         animation-iteration-count 1
         animation-timing-function ease-in-out
         box-shadow 0 10px 10px 0 rgba(0,0,0,.19), 0 6px 3px 0 rgba(0,0,0,.23)
@@ -87,12 +87,12 @@
                 display inline-flex
                 flex-direction row
                 justify-content space-around
-                align-items center
+                align-items flex-end
                 width 100%
                 padding .4em 0
                 &>input[type="text"], &>input[type="password"]
-                    border 1px solid transparentify($C0, .2)
-                    border-radius 2px
+                    border none
+                    border-bottom 2px solid $C4
                     padding .6em
                     margin-left 1em
                     outline none
