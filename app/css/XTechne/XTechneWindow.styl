@@ -16,8 +16,11 @@ div.xtechneWindow
     box-shadow 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 5px 0 rgba(0,0,0,.23)
     opacity 1
     pointer-events auto
-    transition opacity .4s
     outline none
+    transition opacity .4s
+    &.moving
+        transition opacity .4s, width .4s, height .4s, top .4s, left .4s, bottom .4s, right .4s
+        will-change width, height, top, left, bottom, right
     &>.bar
         display flex
         flex-direction row
@@ -32,10 +35,12 @@ div.xtechneWindow
         background-color lighten($C0, 10%)
         border 1px solid lighten($C0, 10%)
         border-radius 3px 3px 0 0
+        cursor default
         &>span.windowBorderName
             text-align left
             color $C7
             font-family $NARROW
+            cursor default
         &>nav.windowBorderControls
             display inline-block
             position relative

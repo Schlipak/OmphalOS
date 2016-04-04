@@ -39,3 +39,4 @@ module.exports = class XTechneDesktop
             if data.theme? and data.theme.backgroundImage?
                 _this.displaySurface.style.backgroundImage = "url('#{data.theme.backgroundImage}')"
             _this.displaySurface.classList.remove 'hidden'
+            window.xDesktop = _this
