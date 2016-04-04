@@ -2,8 +2,50 @@
 // Base animations //
 //=================//
 
+// GENERIC ANIMATIONS //
 @keyframes fadeIn
     from
         opacity 0
     to
         opacity 1
+
+@keyframes fadeOut
+    from
+        opacity 1
+    to
+        opacity 0
+
+@keyframes fadeInOut5
+    0%
+        opacity 0
+    5%, 95%
+        opacity 1
+    100%
+        opacity 0
+
+@keyframes slideFadeInBottom
+    from
+        transform translateY(20px)
+        opacity 0
+    to
+        transform translateY(0)
+        opacity 1
+
+@keyframes popIn
+    from
+        transform scale(0)
+    to
+        transform scale(1)
+
+@keyframes popOut
+    from
+        transform scale(1)
+    to
+        transform scale(0)
+
+// BUTTONS //
+@keyframes buttonError
+    from
+        transform translateX(-4px)
+    to
+        transform translateX(4px)

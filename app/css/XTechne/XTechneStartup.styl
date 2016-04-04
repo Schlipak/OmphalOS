@@ -3,6 +3,7 @@
 //=================================//
 
 @require '../DefaultVars'
+@require '../Animations'
 
 .xtechneStartupContainer
     display flex
@@ -17,7 +18,7 @@
     padding 0
     background-color darken($C4, 60%)
     opacity 0
-    animation XTechneStartupFade 5s
+    animation fadeInOut5 5s
     animation-iteration-count 1
     animation-timing-function ease-in-out
     &:before
@@ -29,7 +30,7 @@
         background-position center center
         background-repeat no-repeat
         background-size 250px 250px
-        animation XTechneStartupPopIn .5s
+        animation popIn .5s
         animation-iteration-count 1
         animation-timing-function ease-in-out
         z-index 200
@@ -68,20 +69,6 @@
             animation-timing-function ease-in-out
             animation-fill-mode forwards
             animation-delay 2.5s
-
-@keyframes XTechneStartupFade
-    0%
-        opacity 0
-    5%, 95%
-        opacity 1
-    100%
-        opacity 0
-
-@keyframes XTechneStartupPopIn
-    from
-        transform scale(0)
-    to
-        transform scale(1)
 
 @keyframes XTechneStartupWiden
     from
