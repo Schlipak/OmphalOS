@@ -10,13 +10,17 @@ div.xtechneWindow
     width 300px
     height 200px
     background-color $C7
-    border 1px solid $C0
-    border-top 20px solid $C0
+    border 1px solid lighten($C0, 10%)
+    border-top 20px solid lighten($C0, 10%)
     border-radius 3px
     box-shadow 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 5px 0 rgba(0,0,0,.23)
     opacity 1
     pointer-events auto
     transition opacity .4s
+    outline none
+    &:focus
+        border 1px solid $C0
+        border-top 20px solid $C0
     &.borderless
         border none
         border-radius 0

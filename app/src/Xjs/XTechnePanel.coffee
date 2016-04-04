@@ -44,27 +44,36 @@ module.exports = class XTechnePanel
             elObj.domTarget = el
             elObj.action = elData.onClickAction if elData.onClickAction?
             if elObj.action? and elObj.action is 'startMenuToggle'
+                elObj.domTarget.id = "startMenuToggler"
                 elObj.menu = new XTechneWindow @displaySurface, 'Start', {
                     position:
                         left: '0'
                         right: null
                         top: null
-                        bottom: '60px'
+                        bottom: '50px'
                     size:
                         w: '400px'
                         h: '600px'
                     borders: false
                     background: '#282828'
                 }
+                elObj.menu.window.addEventListener 'blur', (e) ->
+                    o = _this.getElementFromWindow e.srcElement
+                    o.menu.hide()
             @elements.push elObj
 
-    getElementFromDOM: (domEl) ->
+    getElementFromTarget: (domEl) ->
         for o in @elements
             if o.domTarget is domEl
                 return o
 
+    getElementFromWindow: (w) ->
+        for o in @elements
+            if o.menu? and o.menu.window is w
+                return o
+
     handleClick: (e) ->
-        o = @getElementFromDOM e.srcElement
+        o = @getElementFromTarget e.srcElement
         if not o?
             # TODO: Replace with future notification system call
             console.warn "Unknown panel item #{e.srcElement}"

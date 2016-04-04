@@ -18,6 +18,7 @@ module.exports = class XTechneWindow
         @displaySurface = surface
         @window = document.createElement 'div'
         @window.classList.add 'xtechneWindow'
+        @window.tabIndex = 0
         @style = style
         if @style.borders is false
             @window.classList.add 'borderless'
@@ -36,7 +37,6 @@ module.exports = class XTechneWindow
         else
             left = (window.innerWidth / 2) - (parseInt(@window.style.width) / 2)
             top = (window.innerHeight / 2) - (parseInt(@window.style.height) / 2)
-            console.log left, top
             @window.style.left = "#{left}px"
             @window.style.top = "#{top}px"
         if @style.background?
@@ -45,9 +45,17 @@ module.exports = class XTechneWindow
 
     show: () ->
         @window.classList.remove 'hidden'
+        @window.focus()
 
     hide: () ->
         @window.classList.add 'hidden'
+        @window.blur()
 
     toggle: () ->
-        @window.classList.toggle 'hidden'
+        if @isHidden
+            @show()
+        else
+            @hide()
+
+    isHidden: () ->
+        @window.classList.contains 'hidden'
