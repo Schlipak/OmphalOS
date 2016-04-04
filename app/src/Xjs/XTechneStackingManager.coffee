@@ -54,3 +54,11 @@ module.exports = class XTechneStackingManager
                     return s.frame
             i++
         undefined
+
+    findByFrame: (frame) ->
+        i = 0
+        for s in @stack
+            if s.frame is frame
+                s.target
+            i++
+        undefined

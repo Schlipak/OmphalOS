@@ -131,13 +131,17 @@ module.exports = class XTechneWindow
 
     minimize: () ->
         @window.classList.add 'moving'
+        left = '0%'
+        target = xDesktop.stackManager.findByFrame @window
+        if target?
+            left = target.domTarget.offsetLeft + (target.domTarget.offsetWidth / 2) + 'px'
         @setSize {
             w: '0px'
             h: '0px'
         }
         @setPosition {
             top: '100%'
-            left: '50%'
+            left: left
         }
         @hide()
         _this = @
