@@ -2,7 +2,10 @@ module.exports = class XTechneWindow
     @className  : 'XTechneWindow'
 
     @displaySurface = null
+
+    @name           = ""
     @window         = null
+    @bar            = null
     @style          = null
 
     constructor: (surface, name, style) ->
@@ -16,6 +19,7 @@ module.exports = class XTechneWindow
             console.warn 'No style'
             return undefined
         @displaySurface = surface
+        @name = name
         @window = document.createElement 'div'
         @window.classList.add 'xtechneWindow'
         @window.tabIndex = 0
@@ -23,9 +27,9 @@ module.exports = class XTechneWindow
         if @style.borders is false
             @window.classList.add 'borderless'
         @hide()
-        @init()
+        @init(!(@style.borders is false))
 
-    init: () ->
+    init: (borders) ->
         if @style.size? and @style.size.w? and @style.size.h?
             @window.style.width = @style.size.w
             @window.style.height = @style.size.h
@@ -42,6 +46,20 @@ module.exports = class XTechneWindow
         if @style.background?
             @window.style.background = @style.background
         @displaySurface.appendChild @window
+        if borders
+            @bar = document.createElement 'div'
+            @bar.classList.add 'bar'
+            @bar.classList.add 'noselect'
+            content = "
+                <span class='windowBorderName'>#{@name}</span>
+                <nav class='windowBorderControls'>
+                    <span class='windowBorderControl minimize'></span>
+                    <span class='windowBorderControl maximize'></span>
+                    <span class='windowBorderControl close'></span>
+                </nav>
+            "
+            @bar.insertAdjacentHTML 'beforeend', content
+            @window.appendChild @bar
 
     show: () ->
         @window.classList.remove 'hidden'
