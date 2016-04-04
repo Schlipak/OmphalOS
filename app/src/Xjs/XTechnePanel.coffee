@@ -55,7 +55,7 @@ module.exports = class XTechnePanel
             if o.isOpen
                 win = @xdesktop.stackManager.findByTarget o
                 if win?
-                    win.show()
+                    if win.isHidden() then win.show() else win.minimize()
                 else
                     o.setOpen false
             else
