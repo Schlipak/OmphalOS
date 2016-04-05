@@ -11,6 +11,8 @@ module.exports  = class OS
     @displayManager = null
 
     constructor: (container) ->
+        if @isInFrame()
+            return @displayFrameError()
         @kernel = new Kernel(container)
         return @
 
@@ -25,3 +27,12 @@ module.exports  = class OS
         if not @displayManager?
             throw new OSException @, "Could not connect to #{XTechne.className}"
         @displayManager.init()
+
+    isInFrame: () ->
+        try
+            return window.self isnt window.top
+        catch error
+            return true
+
+    displayFrameError: () ->
+        throw new OSException "Cannot run an instance of #{OS.className} in an iFrame"

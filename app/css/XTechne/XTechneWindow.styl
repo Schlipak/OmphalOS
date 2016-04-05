@@ -14,7 +14,7 @@ div.xtechneWindow
     padding-top 25px
     background-color $C7
     border 1px solid lighten($C0, 10%)
-    border-radius 5px 5px 3px 3px
+    border-radius 6px 6px 3px 3px
     box-shadow 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 5px 0 rgba(0,0,0,.23)
     opacity 1
     pointer-events auto
@@ -39,6 +39,7 @@ div.xtechneWindow
         border 1px solid lighten($C0, 10%)
         border-radius 3px 3px 0 0
         cursor default
+        z-index 9999
         &>span.windowBorderName
             text-align left
             color $C7
@@ -65,11 +66,11 @@ div.xtechneWindow
                     background-image url('../usr/share/icons/common/maximize.svg')
                 &.close
                     background-image url('../usr/share/icons/common/close.svg')
-    &:focus
-        border 1px solid $C0
-        &>.bar
-            background-color $C0
-            border 1px solid $C0
+    // &:focus
+    //     border 1px solid $C0
+    //     &>.bar
+    //         background-color $C0
+    //         border 1px solid $C0
     &.borderless
         border none
         border-radius 0
