@@ -31,7 +31,8 @@ module.exports = class XTechnePanel
         for elData in contents
             el = new XTechnePanelItem @, elData
             if not el? then continue
-            @container.appendChild el.domTarget
+            @container.appendChild el.wrapper
+            el.initTooltip()
             @elements.push el
 
     getElementFromTarget: (domEl) ->
@@ -43,6 +44,13 @@ module.exports = class XTechnePanel
         for o in @elements
             if o.menu? and o.menu.window is w
                 return o
+
+    actionToString: (a) ->
+        if not a? then return ''
+        a = a.split('exec ')[1]
+        if not a? then return ''
+        a = a.slice(0,1).toUpperCase() + a.slice(1).toLowerCase()
+        return a
 
     handleClick: (e) ->
         o = @getElementFromTarget e.srcElement

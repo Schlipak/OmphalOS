@@ -43,41 +43,45 @@ $SEPARATOR_WIDTH = $PANEL_HEIGHT / 2.5
         border-top 1px solid rgba(255,255,255,.05)
         z-index 999999
         opacity 1
-        &>div.xtechneDesktopPanelItem
+        &>div.xtechneDesktopPanelItemWrapper
             display inline-block
             position relative
-            width $PANEL_HEIGHT
             height $PANEL_HEIGHT
-            background-position center center
-            background-repeat no-repeat
-            background-size $ICON_SIZE $ICON_SIZE
-            transition background-color .2s
-            cursor pointer
-            &:hover
-                background-color rgba(255,255,255,.1)
-            &:after
-                content ''
-                display block
-                position absolute
-                bottom 0
-                left 0
-                width 100%
-                height 0px
-                background-color $C6
-                transition height .2s
-            &.open:after
-                height 5px
-        &>div.xtechneDesktopPanelSeparator
-            display inline-block
-            position relative
-            width $SEPARATOR_WIDTH
-            height $PANEL_HEIGHT
-            &:before
-                content ''
-                display block
-                position absolute
-                width 2px
-                height 70%
-                background-color transparentify($C7, 50%)
-                left calc(50% - 1px)
-                top 15%
+            &>div.xtechneDesktopPanelItem
+                display inline-block
+                position relative
+                width $PANEL_HEIGHT
+                height $PANEL_HEIGHT
+                background-position center center
+                background-repeat no-repeat
+                background-size $ICON_SIZE $ICON_SIZE
+                transition background-color .2s
+                cursor pointer
+                &:hover
+                    background-color rgba(255,255,255,.1)
+                &:after
+                    content ''
+                    display block
+                    position absolute
+                    bottom 0
+                    left 0
+                    width 100%
+                    height 0px
+                    background-color $C6
+                    transition height .2s
+                &.open:after
+                    height 5px
+            &>div.xtechneDesktopPanelSeparator
+                display inline-block
+                position relative
+                width $SEPARATOR_WIDTH
+                height $PANEL_HEIGHT
+                &:before
+                    content ''
+                    display block
+                    position absolute
+                    width 2px
+                    height 70%
+                    background-color transparentify($C7, 50%)
+                    left calc(50% - 1px)
+                    top 15%

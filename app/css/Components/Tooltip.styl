@@ -1,0 +1,25 @@
+//==========//
+// Tooltips //
+//==========//
+
+@require '../DefaultVars'
+
+*>span.tooltip
+    display block
+    position absolute
+    left 50%
+    top 0
+    font-size .9em
+    font-family $WIDE
+    font-weight 300
+    padding .4em
+    color $C7
+    background-color lighten($C0, 10%)
+    border-radius 4px
+    transform translateX(-50%) scale(0)
+    opacity 0
+    transition transform .4s, opacity .4s, top .4s
+*:hover>span.tooltip
+    opacity 1
+    top -2.5em
+    transform translateX(-50%) scale(1)

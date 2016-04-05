@@ -1,4 +1,5 @@
 XTechneWindow   = require 'src/Xjs/XTechneWindow'
+Position        = require 'src/JSUtils/Position'
 
 module.exports = class XTechnePanelItem
     @className  : 'XTechnePanelItem'
@@ -7,7 +8,9 @@ module.exports = class XTechnePanelItem
 
     @panel      = null
 
+    @wrapper    = null
     @domTarget  = null
+    @tooltip    = null
     @action     = null
     @menu       = null
 
@@ -25,8 +28,11 @@ module.exports = class XTechnePanelItem
         _this = @
         @panel = panel
         @type = data.type
+        @wrapper = document.createElement 'div'
+        @wrapper.classList.add 'xtechneDesktopPanelItemWrapper'
         @domTarget = document.createElement 'div'
         @domTarget.classList.add @type
+        @wrapper.appendChild @domTarget
         if @type isnt 'xtechneDesktopPanelSeparator'
             @domTarget.style.backgroundImage = "url('#{data.iconSrc}')"
             @domTarget.onclick = (e) ->
@@ -35,6 +41,15 @@ module.exports = class XTechnePanelItem
         @action = data.onClickAction if data.onClickAction?
         if @action? and @action is 'startMenuToggle'
             @createStartMenu()
+
+    initTooltip: () ->
+        _this = @
+        action = @panel.actionToString @action
+        if action is '' then return
+        @tooltip = document.createElement 'span'
+        @tooltip.classList.add 'tooltip'
+        @tooltip.innerHTML = action
+        @wrapper.appendChild @tooltip
 
     createStartMenu: () ->
         @domTarget.id = "startMenuToggler"

@@ -31,6 +31,7 @@ module.exports = class XTechneDesktop
         _this = @
         @stackManager = new XTechneStackingManager()
         AjaxHelper.getJSON 'etc/xtechne/desktoprc', (data) ->
+            window.xDesktop = _this
             _this.panels = new Array
             for pData in data.panels
                 panel = new XTechnePanel _this, _this.displaySurface, pData
@@ -39,4 +40,3 @@ module.exports = class XTechneDesktop
             if data.theme? and data.theme.backgroundImage?
                 _this.displaySurface.style.backgroundImage = "url('#{data.theme.backgroundImage}')"
             _this.displaySurface.classList.remove 'hidden'
-            window.xDesktop = _this
