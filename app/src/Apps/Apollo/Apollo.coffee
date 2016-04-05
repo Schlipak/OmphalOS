@@ -28,7 +28,7 @@ module.exports = class Apollo extends XTechneWindow
             type: 'flex'
             direction: 'column'
         }
-        @logo = Nomos.createImage '../usr/share/icons/apps/apollo.svg', '200px', '200px'
+        @logo = Nomos.createImage 'usr/share/icons/apps/apollo.svg', '200px', '200px'
         @text = Nomos.createText "#{Apollo.className} - v#{Apollo.version}", '18px'
         if @logo? then @layout.appendChild @logo
         if @text? then @layout.appendChild @text
