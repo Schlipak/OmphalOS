@@ -3,6 +3,8 @@ JavaScript based operating system
 
 This project is in very early development, and isn't functional yet.
 
+[See the demo](http://schlipak.github.io/OmphalOS) (Use `demo` as user and password)
+
 ### The features so far
 
 - TTY emulator, switch with Ctrl+Alt+[1-7]
